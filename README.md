@@ -5,20 +5,6 @@ Crypto Market Data Collector
 This project implements an architecture for near real-time ingestion, storage, and alerting based on cryptocurrency market data from CoinGecko. The system retrieves metrics for BTC, ETH, and ZEC, stores them in PostgreSQL, and generates alerts when price or volume deviates by more than 2% from a rolling 5-minute average.
 
 ---
-
-## 🏗 Architecture Diagram
-
-![Architecture Diagram](docs/architecture.png)
-
-Below is the full end-to-end architecture combining batch, real-time ingestion, data lake, BI, orchestration, and ML workloads:
-
-![Architecture Diagram Stream](docs/architecture_stream.png)
-
-![Architecture](docs/architecture.png)
-
-In this architecture, I rely only on AWS services I have personally used and understand well. Data originates from multiple sources: operational systems such as CRM applications landing in S3, and real-time event streams ingested through Amazon Kinesis. The ingestion layer combines several patterns: Kinesis Data Streams for streaming input, AWS glue for event-driven extraction or API ingestion, and AWS Glue Crawlers to automatically discover schemas and populate the Data Catalog. Workflow orchestration and dependency management are handled through AWS Step Functions. For storage, the system follows a lakehouse pattern using Amazon S3 structured into Raw, Staging, Analytics, and Curated zones, allowing data to mature through quality and transformation steps, with the option to integrate Amazon Redshift for high-performance analytics. Data processing is implemented with AWS Glue ETL jobs using PySpark for batch transformation. Amazon Athena enables SQL queries directly on S3, QuickSight provides dashboards and BI visualization, and Amazon SageMaker supports machine learning workflows on curated datasets. Data testing can be performed using AWS Glue to validate schema consistency, null checks, duplicates, and business rule constraints, while unit tests cover transformation logic in ETL code. Security is enforced through IAM least-privilege roles, centralized secret management via Secrets Manager.
-Finally, Amazon SNS delivers pipeline notifications and quality alerts, ensuring the platform is observable, reliable, and suitable for both analytical and operational real-time use cases.
-
 ## 📐 Architecture Overview
 
 The system follows a modular, production-ready structure inspired by Clean Architecture:
