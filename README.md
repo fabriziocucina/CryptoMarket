@@ -1,8 +1,8 @@
 # Crypto Market Data Collectors
 
-Crypto Market Data Collector + Real-Time Alert Engine
+Crypto Market Data Collector
 
-This project implements an architecture for real-time ingestion, storage, and alerting based on cryptocurrency market data from CoinGecko. The system retrieves metrics for BTC, ETH, and ZEC, stores them in PostgreSQL, and generates alerts when price or volume deviates by more than 2% from a rolling 5-minute average.
+This project implements an architecture for near real-time ingestion, storage, and alerting based on cryptocurrency market data from CoinGecko. The system retrieves metrics for BTC, ETH, and ZEC, stores them in PostgreSQL, and generates alerts when price or volume deviates by more than 2% from a rolling 5-minute average.
 
 ---
 
