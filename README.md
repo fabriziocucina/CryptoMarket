@@ -152,8 +152,6 @@ pytest -q
 
 ## 🧩 Extensibility: How to Extend the App
 
-### Describe how can this app be extended to different metrics, assets or purposes?
-
 The application is designed to be easily extensible thanks to its modular and layered architecture. To support new metrics, you can simply update the DTOs and database schema, and the rest of the pipeline (repository, services, and alert engine) adapts without major changes. Adding new assets is straightforward just include them in the client request or create additional client classes if integrating other data providers. The alert engine is also extensible: new alert rules can be introduced by adding additional strategy classes or rule evaluators. Finally, the system supports multiple output mechanisms, so extending alerts to Kafka, AWS SNS/SQS, Webhooks, or S3 is as simple as implementing additional writers or publishers while keeping the core logic untouched.
 
 ---
